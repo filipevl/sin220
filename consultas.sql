@@ -1,13 +1,13 @@
 -- 1. Quantos países estão na base de dados?
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 SELECT  COUNT(nome) AS 'Número de paises'
 FROM pais;
 
 -- 2. Qual o total de casos para o mundo no dia 14/04/2021?
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 SELECT  SUM(total_casos)
 FROM dados_covid
@@ -15,11 +15,11 @@ WHERE dia = '2021-04-14';
 
 -- 3. Quais foram os 10 países com mais casos confirmados no mês de Março/2021（ordem descrescente）? 
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 SELECT  distinct p.nome
 FROM pais AS p, dados_covid AS d
-WHERE p.sigla_pais = d.pais_sigla_pais 
+WHERE p.sigla_pais = d.sigla_pais 
 AND d.dia < '2021-04-01' 
 AND d.dia > '2021-02-29'
 ORDER BY d.total_casos desc 
@@ -27,7 +27,7 @@ LIMIT 10;
 
 -- 4. Liste os 10 países com maior e os 10 com menor expectativa de vida.
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 drop temporary table  if exists PAISESMAIOR;
 drop temporary table if exists PAISESMENOR;
@@ -39,8 +39,8 @@ CREATE TEMPORARY TABLE PAISESMAIOR(
 
 INSERT INTO PAISESMAIOR	(nome)
 SELECT distinct p.nome 
-FROM trabalho_sin_220.pais as p, trabalho_sin_220.dados_covid as d 
-where p.sigla_pais = d.pais_sigla_pais
+FROM `6310_6320`.pais as p, `6310_6320`.dados_covid as d 
+where p.sigla_pais = d.sigla_pais
 order by p.expectativa_vida desc
 limit 10;
 
@@ -51,8 +51,8 @@ CREATE TEMPORARY TABLE PAISESMENOR(
 
 INSERT INTO PAISESMENOR	(nome)
 SELECT distinct p.nome 
-FROM trabalho_sin_220.pais as p, trabalho_sin_220.dados_covid as d 
-where p.sigla_pais = d.pais_sigla_pais
+FROM `6310_6320`.pais as p, `6310_6320`.dados_covid as d 
+where p.sigla_pais = d.sigla_pais
 order by p.expectativa_vida
 limit 10;
 
@@ -68,7 +68,7 @@ drop temporary table PAISESMENOR;
 
 -- 5. Liste os continentes contendo o total de casos de cada um em 2021
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 drop table if exists CasosContinente;
 
@@ -77,7 +77,7 @@ select p.continente_id,
     sum(d.novos_casos) as total
 from pais as p,
     dados_covid as d
-where p.sigla_pais = d.pais_sigla_pais
+where p.sigla_pais = d.sigla_pais
     and d.dia > '2020-12-31'
     and d.dia < '2022-01-01'
 group by p.continente_id;
@@ -92,7 +92,7 @@ drop table CasosContinente;
 -- 6. Liste os países da América do Sul e inclua as informações do total de pessoas total-mente vacinadas em 2021,
 -- em valores absolutos e percentual. Ordene o resultadoem ordem decrescente pelo percentual de vacinados.
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 drop table if exists aux;
 
@@ -101,7 +101,7 @@ select p.nome, p.sigla_pais,
     max(d.`pessoas_totalmente_vacinadas`) as vac
 from dados_covid as d,
     paisesASul as p
-where d.pais_sigla_pais = p.sigla_pais
+where d.sigla_pais = p.sigla_pais
 group by p.nome
 order by p.nome,
     d.dia desc;
@@ -109,7 +109,7 @@ order by p.nome,
 select a.nome, a.vac, d.`pessoas_totalmente_vacinadas_%`
 
 	   from aux as a, dados_covid as d
-       where a.vac = d.pessoas_totalmente_vacinadas and a.sigla_pais = d.pais_sigla_pais
+       where a.vac = d.pessoas_totalmente_vacinadas and a.sigla_pais = d.sigla_pais
        order by nome;
        
 drop table if exists aux;
@@ -120,39 +120,39 @@ drop table if exists aux;
 -- que engloba várias medidas como fechamento de escolas, proibição de viagens, . . . )
 -- e o total de novos casos por milhão de habitantes confirmados para o mês de Março/2021
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 select p.nome, avg(d.grau_severidade) as 'Grau de severidade', sum(d.novos_casos_milhao) as 'Total de casos por milhao'
   from pais as p, dados_covid as d
- where p.sigla_pais = d.pais_sigla_pais and d.dia > '2021-02-28' and d.dia < '2021-04-01'
+ where p.sigla_pais = d.sigla_pais and d.dia > '2021-02-28' and d.dia < '2021-04-01'
  group by p.nome
 
 
 -- 8. Quais países não possuem informação de pacientes na UTI para o mês de Feve-reiro/2021
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 SELECT distinct p.nome 
-from trabalho_sin_220.pais as p, 
-     trabalho_sin_220.dados_covid as d
-     where p.sigla_pais = d.pais_sigla_pais
+from `6310_6320`.pais as p, 
+     `6310_6320`.dados_covid as d
+     where p.sigla_pais = d.sigla_pais
      and d.dia > '2021-01-31'  and d.dia < '2021-03-01'
      and d.pacientes_uti is NULL
 
 -- 9. Qual foi o dia com a maior quantidade de novos casos registrados de COVID-19 no Brasil?
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 SELECT d.dia
-from trabalho_sin_220.pais as p, 
-     trabalho_sin_220.dados_covid as d
-     where p.sigla_pais = d.pais_sigla_pais
+from `6310_6320`.pais as p, 
+     `6310_6320`.dados_covid as d
+     where p.sigla_pais = d.sigla_pais
      and p.nome = 'Brazil'
     order by d.novos_casos desc limit 1;
 
 -- 10. Qual foi o dia com a maior quantidade de mortes confirmadas por COVID-19 no mundo?
 
-use trabalho_sin_220;
+use `6310_6320`;
 
 drop temporary table if exists totalMortes
 
