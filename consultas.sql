@@ -122,10 +122,19 @@ drop table if exists aux;
 
 use `6310_6320`;
 
+drop table if exists aux;
+
+create temporary table aux
 select p.nome, avg(d.grau_severidade) as 'Grau de severidade', sum(d.novos_casos_milhao) as 'Total de casos por milhao'
   from pais as p, dados_covid as d
  where p.sigla_pais = d.sigla_pais and d.dia > '2021-02-28' and d.dia < '2021-04-01'
- group by p.nome
+ group by p.nome;
+
+ select *
+        from aux
+        where aux.'Grau de severidade' is not null;
+
+drop table if exists aux;
 
 
 -- 8. Quais países não possuem informação de pacientes na UTI para o mês de Feve-reiro/2021
@@ -137,7 +146,7 @@ from `6310_6320`.pais as p,
      `6310_6320`.dados_covid as d
      where p.sigla_pais = d.sigla_pais
      and d.dia > '2021-01-31'  and d.dia < '2021-03-01'
-     and d.pacientes_uti is NULL
+     and d.pacientes_uti is NULL;
 
 -- 9. Qual foi o dia com a maior quantidade de novos casos registrados de COVID-19 no Brasil?
 
