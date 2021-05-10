@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1620605987 "/home/luck/Documents/codes/Github/BD-Project/Latex/main.tex" "/home/luck/Documents/codes/Github/BD-Project/Latex/main.pdf" "main" 1620605993
+["pdflatex"] 1620606454 "/home/luck/Documents/codes/Github/BD-Project/Latex/main.tex" "/home/luck/Documents/codes/Github/BD-Project/Latex/main.pdf" "main" 1620606460
   "/etc/texmf/web2c/texmf.cnf" 1615826271 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.aux" 1620605991 213 679de0ea0edef44069c626cdeda92bc7 ""
-  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.tex" 1620605985 502 7f2b93fd11ff45e190c3486e750b74fd ""
+  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.aux" 1620606459 213 679de0ea0edef44069c626cdeda92bc7 ""
+  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.tex" 1620606449 502 d07070b9bfb024f3a83c4bcd11c677f6 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -40,11 +40,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1618435510 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1618435858 8263196 b898fc05194e29e0fff6224a306d1db0 ""
   "MLR-semFundo.png" 1620605899 67831 fdbaca1a383da7fcdcc26ecd7bb87c85 ""
-  "main.aux" 1620605991 213 679de0ea0edef44069c626cdeda92bc7 "pdflatex"
-  "main.tex" 1620605985 502 7f2b93fd11ff45e190c3486e750b74fd ""
+  "main.aux" 1620606459 213 679de0ea0edef44069c626cdeda92bc7 "pdflatex"
+  "main.tex" 1620606449 502 d07070b9bfb024f3a83c4bcd11c677f6 ""
   (generated)
-  "main.pdf"
   "main.aux"
   "/home/luck/Documents/codes/Github/BD-Project/Latex/main.pdf"
-  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.log"
   "main.log"
+  "main.pdf"
+  "/home/luck/Documents/codes/Github/BD-Project/Latex/main.log"
